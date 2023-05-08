@@ -1,16 +1,19 @@
-# delivery_backoffice
+# Delivery Backoffice
 
-A new Flutter project.
+Um novo projeto Flutter Web desenvolvido junto ao Dart Week 10 com as orientações do professor Rodrigo Rahman.
 
-## Getting Started
+## Como rodar o projeto:
 
-This project is a starting point for a Flutter application.
+Para rodar esse projeto você precisa de ter o backend rodando.
 
-A few resources to get you started if this is your first Flutter project:
+- [Link do backend](https://github.com/rodrigorahman/dw10_delivery_api)
+  <br>
+  Faça download do projeto e abra o mesmo no VS Code.<br>
+  Abra um terminal e rode o comando:<br>
+  `dart pub global activate json_rest_server`<br>
+  Depois de instalada a extensão no terminal dentro do VS Code rode o comando:<br>
+  `json_rest_server run`
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Logo após, baixe esse projeto e rode em sua máquina.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Lembrando que o projeto é Flutter Web, então rode no seu nabegador
