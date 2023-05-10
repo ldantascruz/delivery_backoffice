@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:mobx/mobx.dart';
+import 'package:validatorless/validatorless.dart';
 
 import '../../core/ui/helpers/loader.dart';
 import '../../core/ui/helpers/messages.dart';
@@ -52,7 +53,15 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
   void dispose() {
     emailEC.dispose();
     passwordEC.dispose();
+    statusReactionDisposer();
     super.dispose();
+  }
+
+  void _formSubmit() {
+    final formValid = formKey.currentState?.validate() ?? false;
+    if (formValid) {
+      controller.login(emailEC.text, passwordEC.text);
+    }
   }
 
   @override
@@ -120,20 +129,33 @@ class _LoginPageState extends State<LoginPage> with Loader, Messages {
                         const SizedBox(height: 20),
                         TextFormField(
                           controller: emailEC,
+                          onFieldSubmitted: (_) => _formSubmit(),
                           decoration:
                               const InputDecoration(labelText: 'E-mail'),
+                          validator: Validatorless.multiple(
+                            [
+                              Validatorless.required('E-mail obrigatório'),
+                              Validatorless.email('E-mail Inválido')
+                            ],
+                          ),
                         ),
                         const SizedBox(height: 20),
                         TextFormField(
                           controller: passwordEC,
-                          decoration: const InputDecoration(labelText: 'Senha'),
+                          obscureText: true,
+                          onFieldSubmitted: (_) => _formSubmit(),
+                          decoration: const InputDecoration(
+                            labelText: 'Senha',
+                          ),
+                          validator:
+                              Validatorless.required('Senha obrigatória'),
                         ),
                         const SizedBox(height: 30),
                         SizedBox(
                           width: double.infinity,
                           height: 50,
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: _formSubmit,
                             child: const Text(
                               'Entrar',
                             ),
