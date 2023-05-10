@@ -1,3 +1,5 @@
+import 'package:flutter_modular/flutter_modular.dart';
+
 import 'menu_button.dart';
 import 'menu_enum.dart';
 import 'package:flutter/material.dart';
@@ -26,7 +28,7 @@ class _MenuBarState extends State<MenuBar> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Align(
-            alignment: Alignment.centerRight,
+            alignment: colapsed ? Alignment.center : Alignment.centerRight,
             child: IconButton(
               onPressed: () {
                 setState(() {
@@ -52,6 +54,7 @@ class _MenuBarState extends State<MenuBar> {
                 onPressed: (Menu menu) {
                   setState(() {
                     selectedMenu = menu;
+                    Modular.to.navigate(menu.route);
                   });
                 },
               );

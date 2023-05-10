@@ -26,6 +26,12 @@ class MenuButton extends StatelessWidget {
           replacement: Container(
             margin: const EdgeInsets.all(10),
             padding: const EdgeInsets.all(5),
+            decoration: isSelected
+                ? BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: const Color(0xFFFFF5E2),
+                  )
+                : null,
             child: Tooltip(
               message: menu.label,
               child: IconButton(

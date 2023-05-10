@@ -10,7 +10,7 @@ Future<void> main() async {
   return runApp(
     ModularApp(
       module: AppModule(),
-      child: const AppWidget(),
+      child: AppWidget(),
     ),
   );
 }
